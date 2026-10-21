@@ -10,20 +10,20 @@ gh auth login
 # Step 2: Buat labels
 Write-Host "`n>> Membuat labels..." -ForegroundColor Cyan
 
-gh label create "type: feature" --color "0075ca" --description "Fitur baru" --repo PranataGM/Fleure-Flower
-gh label create "type: bug" --color "d73a4a" --description "Bug atau error" --repo PranataGM/Fleure-Flower
-gh label create "type: enhancement" --color "a2eeef" --description "Peningkatan fitur yang ada" --repo PranataGM/Fleure-Flower
-gh label create "type: chore" --color "e4e669" --description "Task teknis (setup, config)" --repo PranataGM/Fleure-Flower
-gh label create "priority: high" --color "b60205" --description "Prioritas tinggi" --repo PranataGM/Fleure-Flower
-gh label create "priority: medium" --color "fbca04" --description "Prioritas sedang" --repo PranataGM/Fleure-Flower
-gh label create "priority: low" --color "0e8a16" --description "Prioritas rendah" --repo PranataGM/Fleure-Flower
-gh label create "status: in-progress" --color "e99695" --description "Sedang dikerjakan" --repo PranataGM/Fleure-Flower
-gh label create "status: ready" --color "c2e0c6" --description "Siap untuk di-merge" --repo PranataGM/Fleure-Flower
-gh label create "backend" --color "1d2e24" --description "Pekerjaan backend Laravel" --repo PranataGM/Fleure-Flower
-gh label create "frontend" --color "f4f1ea" --description "Pekerjaan UI/View Blade" --repo PranataGM/Fleure-Flower
-gh label create "database" --color "5319e7" --description "Migration dan seeder" --repo PranataGM/Fleure-Flower
-gh label create "payment" --color "006b75" --description "Midtrans payment gateway" --repo PranataGM/Fleure-Flower
-gh label create "admin" --color "2a4334" --description "Panel admin" --repo PranataGM/Fleure-Flower
+gh label create "type: feature" --color "0075ca" --description "Fitur baru" --repo pranataa-labs/Fleure-Flower
+gh label create "type: bug" --color "d73a4a" --description "Bug atau error" --repo pranataa-labs/Fleure-Flower
+gh label create "type: enhancement" --color "a2eeef" --description "Peningkatan fitur yang ada" --repo pranataa-labs/Fleure-Flower
+gh label create "type: chore" --color "e4e669" --description "Task teknis (setup, config)" --repo pranataa-labs/Fleure-Flower
+gh label create "priority: high" --color "b60205" --description "Prioritas tinggi" --repo pranataa-labs/Fleure-Flower
+gh label create "priority: medium" --color "fbca04" --description "Prioritas sedang" --repo pranataa-labs/Fleure-Flower
+gh label create "priority: low" --color "0e8a16" --description "Prioritas rendah" --repo pranataa-labs/Fleure-Flower
+gh label create "status: in-progress" --color "e99695" --description "Sedang dikerjakan" --repo pranataa-labs/Fleure-Flower
+gh label create "status: ready" --color "c2e0c6" --description "Siap untuk di-merge" --repo pranataa-labs/Fleure-Flower
+gh label create "backend" --color "1d2e24" --description "Pekerjaan backend Laravel" --repo pranataa-labs/Fleure-Flower
+gh label create "frontend" --color "f4f1ea" --description "Pekerjaan UI/View Blade" --repo pranataa-labs/Fleure-Flower
+gh label create "database" --color "5319e7" --description "Migration dan seeder" --repo pranataa-labs/Fleure-Flower
+gh label create "payment" --color "006b75" --description "Midtrans payment gateway" --repo pranataa-labs/Fleure-Flower
+gh label create "admin" --color "2a4334" --description "Panel admin" --repo pranataa-labs/Fleure-Flower
 
 Write-Host "Labels berhasil dibuat!" -ForegroundColor Green
 
@@ -32,7 +32,7 @@ Write-Host "`n>> Membuat issues..." -ForegroundColor Cyan
 
 # ISSUE 1
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🗄️ [DB] Setup database MySQL & jalankan migration" `
   --label "type: chore,priority: high,database" `
   --body @"
@@ -62,7 +62,7 @@ Closes saat migration berhasil berjalan.
 
 # ISSUE 2
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🔑 [Config] Setup Midtrans Sandbox Keys" `
   --label "type: chore,priority: high,payment" `
   --body @"
@@ -94,7 +94,7 @@ MIDTRANS_IS_PRODUCTION=false
 
 # ISSUE 3
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🏠 [Frontend] Halaman Beranda — Hero, Desain Terbaru, USP" `
   --label "type: feature,priority: high,frontend" `
   --body @"
@@ -123,7 +123,7 @@ _Tambahkan screenshot setelah halaman berjalan._
 
 # ISSUE 4
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🌸 [Frontend] Halaman Koleksi dengan Filter Kategori" `
   --label "type: feature,priority: high,frontend" `
   --body @"
@@ -145,7 +145,7 @@ Halaman koleksi menampilkan semua produk tersedia dengan filter kategori real-ti
 
 # ISSUE 5
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🛒 [Feature] Keranjang Belanja (Cart)" `
   --label "type: feature,priority: high,backend,frontend" `
   --body @"
@@ -172,7 +172,7 @@ DELETE /cart/clear
 
 # ISSUE 6
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "💳 [Feature] Checkout & Integrasi Midtrans Snap" `
   --label "type: feature,priority: high,backend,payment" `
   --body @"
@@ -201,7 +201,7 @@ GET  /order/success/{code}
 
 # ISSUE 7
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🛠️ [Admin] Panel Admin — Dashboard, CRUD Produk, Pesanan" `
   --label "type: feature,priority: high,admin,backend" `
   --body @"
@@ -240,7 +240,7 @@ Panel admin untuk mengelola produk, pesanan, dan pengaturan toko.
 
 # ISSUE 8
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "📱 [Frontend] Responsif Mobile & Tablet — Semua Halaman" `
   --label "type: enhancement,priority: medium,frontend" `
   --body @"
@@ -268,7 +268,7 @@ Pastikan semua halaman tampil dengan baik di mobile, tablet, dan desktop.
 
 # ISSUE 9
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🔒 [Security] Hardening Admin & Input Validation" `
   --label "type: enhancement,priority: medium,backend,admin" `
   --body @"
@@ -290,7 +290,7 @@ Memastikan keamanan aplikasi dari sisi input validation, XSS, dan CSRF.
 
 # ISSUE 10
 gh issue create `
-  --repo PranataGM/Fleure-Flower `
+  --repo pranataa-labs/Fleure-Flower `
   --title "🚀 [Deployment] Deploy ke Production Server" `
   --label "type: chore,priority: low,backend" `
   --body @"
@@ -322,4 +322,4 @@ location / { try_files \$uri \$uri/ /index.php?\$query_string; }
 "@
 
 Write-Host "`n✅ Semua 10 issues berhasil dibuat!" -ForegroundColor Green
-Write-Host "📎 Lihat di: https://github.com/PranataGM/Fleure-Flower/issues" -ForegroundColor Cyan
+Write-Host "📎 Lihat di: https://github.com/pranataa-labs/Fleure-Flower/issues" -ForegroundColor Cyan
