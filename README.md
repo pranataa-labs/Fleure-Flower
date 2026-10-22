@@ -4,6 +4,20 @@ Fleure Flower adalah aplikasi e-Commerce toko bunga premium yang dibangun menggu
 
 ---
 
+## 📸 Preview Tampilan Aplikasi (HD)
+
+<p align="center">
+  <b>Etalase Beranda (Storefront Landing Page)</b><br>
+  <img src="screenshots/landing-preview.png" alt="Fleure Flower Landing Page" width="920">
+</p>
+
+<p align="center">
+  <b>Dashboard Admin Toko (Shadcn-Admin Style)</b><br>
+  <img src="screenshots/dashboard-preview.png" alt="Fleure Flower Admin Dashboard" width="920">
+</p>
+
+---
+
 ## ✨ Fitur Utama
 
 ### 🛒 Fitur Pelanggan (Storefront)
