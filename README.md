@@ -1,110 +1,109 @@
 # 🌸 Fleure Flower - Premium Florist E-Commerce
 
-Fleure Flower adalah aplikasi e-Commerce toko bunga premium yang dibangun menggunakan framework **Laravel 13** dan **Tailwind CSS v4**. Aplikasi ini dirancang untuk memberikan pengalaman berbelanja bunga (buket, fresh flower, dan kartu ucapan) yang elegan, responsif, dan aman, lengkap dengan **Admin Management Suite** berbasis **Shadcn Admin Design System** yang mendukung mode Light, Dark, dan System.
+![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Midtrans](https://img.shields.io/badge/Midtrans_Payment-00A9E0?style=for-the-badge)
+
+**Fleure Flower** is a luxury boutique florist e-commerce web application engineered with **Laravel 13** and **Tailwind CSS v4**. It delivers an elegant, responsive, and secure floral shopping experience (featuring bespoke bouquets, fresh floral arrangements, and greeting cards), accompanied by an **Administrative Management Suite** inspired by the **Shadcn Admin Design System** with complete Light, Dark, and System theme support.
 
 ---
 
-## 📸 Preview Tampilan Aplikasi (HD)
+## 📸 High-Definition Application Preview
 
 <p align="center">
-  <b>Etalase Beranda (Storefront Landing Page)</b><br>
+  <b>Storefront Landing Page</b><br>
   <img src="screenshots/landing-preview.png" alt="Fleure Flower Landing Page" width="920">
 </p>
 
 <p align="center">
-  <b>Dashboard Admin Toko (Shadcn-Admin Style)</b><br>
+  <b>Store Administrative Dashboard (Shadcn-Admin Style)</b><br>
   <img src="screenshots/dashboard-preview.png" alt="Fleure Flower Admin Dashboard" width="920">
 </p>
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
-### 🛒 Fitur Pelanggan (Storefront)
-*   **Autentikasi Modern:** Mendukung pendaftaran dan login standar (Email/Password) serta **Login via Google** (OAuth 2.0 menggunakan Laravel Socialite).
-*   **Manajemen Profil:** Pengguna dapat memperbarui nama (dengan batasan 24 jam), bio profil, serta memilih avatar kustom dari *icon library* bawaan atau menggunakan foto profil Google.
-*   **Katalog Interaktif:** Menampilkan koleksi bunga dengan filter berdasarkan kategori (*Buket, Fresh Flower, Amplop/Kartu*).
-*   **Keranjang Belanja (Cart):** Penyimpanan keranjang belanja terintegrasi dengan *session* untuk kemudahan *checkout*.
-*   **Checkout & Payment Gateway:** Integrasi **Midtrans Snap API** memungkinkan pelanggan melakukan pembayaran dengan berbagai metode (GoPay, QRIS, Virtual Account Bank, Kartu Kredit, dll) secara *real-time*.
+### 🛒 Customer-Facing Storefront
+- **Modern Authentication:** Seamless registration and credential login alongside one-click **Google OAuth 2.0** authentication via Laravel Socialite.
+- **Profile Management:** Users can customize display names (with a 24-hour rate limit), profile bios, and select custom avatars from an integrated icon library or sync their Google avatar.
+- **Interactive Catalog:** Filter floral collections smoothly across categories (*Bouquets, Fresh Flowers, Greeting Cards*).
+- **Session Shopping Cart:** Persistent session-based shopping cart for effortless checkout workflows.
+- **Midtrans Payment Integration:** Real-time processing supporting GoPay, QRIS, Bank Virtual Accounts, and Credit Cards via the **Midtrans Snap API**.
 
-### 📊 Fitur Admin Panel (Shadcn Admin UI)
-*   **Shadcn Design System & Dark Mode:** Tampilan antarmuka modern dengan palet warna Slate OKLCH, radius 0.625rem, collapsible sidebar 16rem, sticky blurred header, serta **3-way Theme Toggle** (Light, Dark, dan System) dengan script anti-FOUC.
-*   **Dashboard Analitik:** 4 KPI Cards ringkas dengan tren persentase, tabel 5 pesanan terbaru, dan **Grafik Pendapatan 7 Hari Terakhir** (menggunakan *Chart.js*) yang otomatis menyesuaikan tema (Light/Dark) secara instan.
-*   **Manajemen Produk (CRUD):** Tambah, edit, hapus katalog, dan filter status produk (Tersedia / Sold Out) dengan area *file upload dropzone* dan *live image preview*.
-*   **Manajemen Pesanan:** Memantau pesanan masuk, melacak status pembayaran Midtrans, dan memperbarui alur proses pengiriman.
-*   **Pengaturan Toko:** Mengelola nama toko, alamat atelier, kontak WhatsApp, dan jam operasional.
-*   **Command Palette (`⌘K` / `Ctrl+K`):** Akses cepat antar halaman admin langsung melalui keyboard.
+### 📊 Administrative Suite (Shadcn Admin UI)
+- **Shadcn Design System & Dark Mode:** Pristine Slate OKLCH color palette, 0.625rem radius, 16rem collapsible sidebar, sticky blurred header, and a **3-Way Theme Toggle** (Light, Dark, System) with anti-FOUC prevention.
+- **Executive Analytics Dashboard:** 4 KPI summary cards with percentage trend indicators, latest order tables, and an auto-adjusting **7-Day Revenue Trend Chart** (Chart.js) responding instantly to theme switches.
+- **Catalog Management (CRUD):** Add, update, delete, and toggle product statuses (Available / Sold Out) with dropzone file uploads and live image previews.
+- **Order Management:** Real-time tracking of order streams, Midtrans payment verification, and delivery progression.
+- **Atelier Settings:** Customize atelier name, physical location, WhatsApp contact, and working hours.
+- **Command Palette (`⌘K` / `Ctrl+K`):** Rapid keyboard-driven navigation across admin modules.
 
-### 🛡️ Keamanan & Standar Teknis
-*   **Admin Route Obfuscation:** URL panel administrasi tidak menggunakan path statis yang dapat ditebak (`/admin`), melainkan dikonfigurasi melalui variabel `ADMIN_PREFIX` di `.env` (default: `fleure-portal-mgmt`). Path umum lama (`/admin`, `/admin/login`) otomatis mengembalikan HTTP 404 Not Found guna mencegah automated scanning dan serangan brute-force.
-*   **Proteksi Brute-Force (Rate Limiting):** Membatasi jumlah percobaan *login* yang gagal berturut-turut pada akun Pelanggan maupun Admin.
-*   **Database Race-Condition Lock (Pessimistic Locking):** Menggunakan `DB::transaction()` dan `lockForUpdate()` pada *webhook/callback* Midtrans untuk mencegah pemrosesan transaksi ganda.
-*   **XSS & CSRF Protection:** Seluruh form dilindungi token `@csrf`. Input formulir disanitasi menggunakan `strip_tags()` untuk mencegah injeksi skrip HTML/JS berbahaya.
-*   **Graceful Error Handling:** Penanganan *try-catch* pada integrasi API pihak ketiga (Midtrans) agar kegagalan gateway tidak merusak pengalaman pengguna.
-*   **Strict Unique ID Generation:** Pembuatan kode faktur / Order ID unik dengan verifikasi bertahap.
-
----
-
-## 🚀 Panduan Instalasi (Development)
-
-1. **Clone Repository:**
-   ```bash
-   git clone https://github.com/pranataa-labs/Fleure-Flower.git
-   cd Fleure-Flower
-   ```
-
-2. **Install Dependencies:**
-   ```bash
-   composer install
-   npm install
-   ```
-
-3. **Environment Setup:**
-   Salin file konfigurasi lingkungan:
-   ```bash
-   cp .env.example .env
-   ```
-   *Pastikan kredensial database MySQL, Midtrans Server Key, dan Google OAuth Client ID telah disesuaikan.*
-
-4. **Generate Application Key:**
-   ```bash
-   php artisan key:generate
-   ```
-
-5. **Migrasi Database & Seeder:**
-   ```bash
-   php artisan migrate --seed
-   ```
-   *Seeder bawaan menyediakan akun admin default (`username: admin`, `password: admin123`) dan katalog bunga awal.*
-
-6. **Storage Link:**
-   ```bash
-   php artisan storage:link
-   ```
-
-7. **Kompilasi Asset & Jalankan Aplikasi:**
-   ```bash
-   # Jalankan Vite server (port 5173 / 5174)
-   npm run dev
-
-   # Di terminal terpisah, jalankan server Laravel
-   php artisan serve
-   ```
-   - **Storefront Pelanggan:** `http://localhost:8000`
-   - **Admin Management Suite:** `http://localhost:8000/admin`
+### 🛡️ Security & Engineering Standards
+- **Admin Route Obfuscation:** The administration URL avoids predictable routes (`/admin`) and is dynamically driven by `ADMIN_PREFIX` in `.env` (default: `fleure-portal-mgmt`). Legacy endpoints (`/admin`, `/admin/login`) return **HTTP 404 Not Found** to thwart automated bot crawlers.
+- **Brute-Force Rate Limiting:** Enforces strict login attempt thresholds on customer and administrative login throttles.
+- **Pessimistic Locking:** Leverages `DB::transaction()` and `lockForUpdate()` on Midtrans webhooks to prevent race conditions and duplicate processing.
+- **XSS & CSRF Immunity:** Forms are protected with `@csrf` tokens; inputs are sanitized to strip malicious script payloads.
+- **Graceful Error Recovery:** Resilient try-catch boundaries on external API calls ensuring third-party gateway hiccups do not break user flows.
+- **Strict Unique Invoice Generation:** Deterministic and unique invoice ID sequence generation.
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Local Installation & Setup Guide
 
-*   **Backend:** [Laravel 13](https://laravel.com/) (PHP 8.3+)
-*   **Admin UI & Theme:** [Tailwind CSS v4](https://tailwindcss.com/), [Shadcn Admin UI Tokens](https://ui.shadcn.com/), [Lucide Icons](https://lucide.dev/), [Chart.js](https://www.chartjs.org/)
-*   **Storefront UI:** Blade Templates, Tailwind CSS, Alpine.js, Phosphor Icons
-*   **Asset Bundler:** [Vite v8](https://vite.dev/) (`@tailwindcss/vite`, `laravel-vite-plugin`)
-*   **Database:** MySQL (MariaDB compatible)
-*   **Payment Gateway:** Midtrans Snap API (`midtrans/midtrans-php`)
-*   **OAuth Provider:** Google Socialite (`laravel/socialite`)
+### 1. Repository Cloning
+```bash
+git clone https://github.com/pranataa-labs/Fleure-Flower.git
+cd Fleure-Flower
+```
+
+### 2. Dependency Installation
+```bash
+composer install
+npm install
+```
+
+### 3. Environment Setup
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+Configure your `.env` parameters:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=fleure_flower
+DB_USERNAME=root
+DB_PASSWORD=
+ADMIN_PREFIX=fleure-portal-mgmt
+MIDTRANS_SERVER_KEY=your-midtrans-server-key
+MIDTRANS_CLIENT_KEY=your-midtrans-client-key
+MIDTRANS_IS_PRODUCTION=false
+```
+
+### 4. Database Migration & Seeding
+```bash
+php artisan migrate --seed
+```
+
+### 5. Symbolic Storage Link
+```bash
+php artisan storage:link
+```
+
+### 6. Asset Compilation & Development Server
+```bash
+npm run build
+php artisan serve
+```
+- Storefront: `http://localhost:8000`
+- Administrative Portal: `http://localhost:8000/login`
 
 ---
 
-*Dikembangkan oleh [pranataa-labs](https://github.com/pranataa-labs).*
+## 🔐 Default Admin Credentials
+
+- **Username:** `admin`
+- **Password:** `admin123`
