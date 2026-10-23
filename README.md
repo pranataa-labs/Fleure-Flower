@@ -36,6 +36,7 @@ Fleure Flower adalah aplikasi e-Commerce toko bunga premium yang dibangun menggu
 *   **Command Palette (`⌘K` / `Ctrl+K`):** Akses cepat antar halaman admin langsung melalui keyboard.
 
 ### 🛡️ Keamanan & Standar Teknis
+*   **Admin Route Obfuscation:** URL panel administrasi tidak menggunakan path statis yang dapat ditebak (`/admin`), melainkan dikonfigurasi melalui variabel `ADMIN_PREFIX` di `.env` (default: `fleure-portal-mgmt`). Path umum lama (`/admin`, `/admin/login`) otomatis mengembalikan HTTP 404 Not Found guna mencegah automated scanning dan serangan brute-force.
 *   **Proteksi Brute-Force (Rate Limiting):** Membatasi jumlah percobaan *login* yang gagal berturut-turut pada akun Pelanggan maupun Admin.
 *   **Database Race-Condition Lock (Pessimistic Locking):** Menggunakan `DB::transaction()` dan `lockForUpdate()` pada *webhook/callback* Midtrans untuk mencegah pemrosesan transaksi ganda.
 *   **XSS & CSRF Protection:** Seluruh form dilindungi token `@csrf`. Input formulir disanitasi menggunakan `strip_tags()` untuk mencegah injeksi skrip HTML/JS berbahaya.

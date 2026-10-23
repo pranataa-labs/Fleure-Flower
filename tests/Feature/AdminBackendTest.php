@@ -13,6 +13,16 @@ class AdminBackendTest extends TestCase
     use RefreshDatabase;
 
     /**
+     * Test legacy predictable admin paths return 404 Not Found.
+     */
+    public function test_legacy_predictable_admin_paths_return_404(): void
+    {
+        $this->get('/admin')->assertStatus(404);
+        $this->get('/admin/login')->assertStatus(404);
+        $this->get('/admin/orders')->assertStatus(404);
+    }
+
+    /**
      * Test unauthenticated guest cannot access protected admin routes.
      */
     public function test_guest_cannot_access_admin_dashboard_or_orders(): void

@@ -65,8 +65,10 @@ Route::post('/midtrans/callback', [CheckoutController::class, 'callback'])
     ->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 Route::get('/order/success/{code}', [CheckoutController::class, 'success'])->name('order.success');
 
-// ── Admin ─────────────────────────────────────────────────────
-Route::prefix('admin')->name('admin.')->group(function () {
+// ── Admin (Obfuscated Route Prefix via ADMIN_PREFIX) ────────
+$adminPrefix = config('app.admin_prefix', env('ADMIN_PREFIX', 'fleure-portal-mgmt'));
+
+Route::prefix($adminPrefix)->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('login.post');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

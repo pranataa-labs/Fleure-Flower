@@ -17,6 +17,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Obfuscated Admin Route Prefix
+    |--------------------------------------------------------------------------
+    |
+    | Prefix route untuk panel admin agar tidak mudah ditebak oleh bot/attacker.
+    | Dapat diubah melalui variabel lingkungan ADMIN_PREFIX di .env.
+    |
+    */
+    'admin_prefix' => env('ADMIN_PREFIX', 'fleure-portal-mgmt'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Environment
     |--------------------------------------------------------------------------
     |
